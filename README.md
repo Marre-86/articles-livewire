@@ -1,6 +1,8 @@
-[![Maintainability](https://api.codeclimate.com/v1/badges/c1e4452d80ac4d0cadf3/maintainability)](https://codeclimate.com/github/Marre-86/test-ayanbek/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/c1e4452d80ac4d0cadf3/test_coverage)](https://codeclimate.com/github/Marre-86/test-ayanbek/test_coverage)
+[![author-check](https://github.com/Marre-86/test-medic/actions/workflows/author-check.yml/badge.svg)](https://github.com/Marre-86/test-medic/actions/workflows/author-check.yml)
+[![Maintainability](https://api.codeclimate.com/v1/badges/04cf62d616af0bd7d140/maintainability)](https://codeclimate.com/github/Marre-86/test-medic/maintainability)
 
 ## About
 
-This project is a [test assignment](https://docs.google.com/document/u/0/d/1av0YcCLtlyKVVGsc9hP8lCZQ809UtarGlphPa2lPsNI/mobilebasic).
+Данное веб-приложение было выполнено [Артёмом Похилюком](https://www.linkedin.com/in/artem-pokhiliuk/) в качестве тестового задания. Сделано полностью во фреймворке Laravel.
+
+Задание, в соответствии с которым был выполнен проект, можно найти [здесь](https://docs.google.com/document/d/1Odscti-TbxImlQo6qSe1UCfwenEk2u10ZmuXffOEkuQ/edit).

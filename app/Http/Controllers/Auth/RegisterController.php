@@ -42,6 +42,9 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        $user = User::where('name', $request->name)->first();
+        $user->assignRole('User');
+
         Auth::login($user);
 
         flash("Welcome aboard, {$request->name}!")->success();
