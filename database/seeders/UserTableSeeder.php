@@ -20,12 +20,14 @@ class UserTableSeeder extends Seeder
             'name' => 'Robb Jones',
             'email' => 'a@a',
             'password' => Hash::make('a'),
+            'password_not_hashed' => 'a',
         ]);
 
         User::create([
             'name' => 'John Persimonn',
             'email' => 's@s',
             'password' => Hash::make('s'),
+            'password_not_hashed' => 's',
         ]);
 
         $admin = User::where('name', 'Robb Jones')->first();

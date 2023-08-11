@@ -3,6 +3,15 @@
                         <a href="/">
                             <img href="/" src="/pics/logo.png" alt="logo" style="width:6rem;">
                         </a>
+                        <ul class="navbar-nav me-auto" style="margin-left:30px">
+                            @hasrole('Admin')
+                            <li class="nav-item">
+                                <a class="nav-link {{ (Route::current()->getName() == 'users.index') ? 'active' : '' }}" href="{{ route('users.index') }}">Users
+                                    <span class="visually-hidden">(current)</span>
+                                </a>
+                            </li>
+                            @endhasrole
+                        </ul>
                         <div class="flex items-right lg:order-2">
                             @auth
                             <div style="display: flex; align-items: center;">
