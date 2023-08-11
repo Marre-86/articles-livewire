@@ -1,6 +1,8 @@
 import './bootstrap';
-import Alpine from 'alpinejs';
+import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
 import ujs from '@rails/ujs';
 
-Alpine.start();
+ 
+Livewire.start()
+
 ujs.start();
