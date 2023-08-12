@@ -20,6 +20,7 @@ class Users extends Component
     public $email = '';
     public $password = '';
     public $role = 'User';
+    public $status = 'Active';
 
     public $title = 'Add User';
     public $sbmBtn = 'Add User';
@@ -31,6 +32,7 @@ class Users extends Component
             'email' => 'required|email|unique:users',
             'password' => 'required|min:2',
             'role' => 'required',
+            'status' => 'required',
         ]);
 
         $user = User::create([
@@ -38,6 +40,7 @@ class Users extends Component
             'email' => $this->email,
             'password' => Hash::make($this->password),
             'password_not_hashed' => $this->password,
+            'status' => $this->status,
         ]);
 
         $role = Role::where('name', $this->role)->first();
@@ -49,6 +52,7 @@ class Users extends Component
 
         $this->name = $this->email = $this->password = null;
         $this->role = 'User';
+        $this->status = 'Active';
     }
 
     public function edit($userId)
@@ -60,6 +64,7 @@ class Users extends Component
         $this->email = $user->email;
         $this->password = $user->password_not_hashed;
         $this->role = $user->roles->first()->name;
+        $this->status = $user->status;
 
         $this->title = 'Edit User';
         $this->sbmBtn = 'Update User';
@@ -72,6 +77,7 @@ class Users extends Component
             'email' => 'required|email|unique:users,email,' . $this->id,
             'password' => 'required|min:2',
             'role' => 'required',
+            'status' => 'required',
         ]);
 
         $user = User::find($this->id);
@@ -81,6 +87,7 @@ class Users extends Component
             'email' => $this->email,
             'password' => Hash::make($this->password),
             'password_not_hashed' => $this->password,
+            'status' => $this->status,
         ]);
 
         $role = Role::where('name', $this->role)->first();
@@ -92,6 +99,7 @@ class Users extends Component
 
         $this->name = $this->email = $this->password = null;
         $this->role = 'User';
+        $this->status = 'Active';
         $this->title = 'Add User';
     }
 

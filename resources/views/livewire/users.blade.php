@@ -50,12 +50,26 @@
                         <label for="password" class="col-sm-3 col-form-label">Role</label>
                         <div class="col-sm-8">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="role" wire:model="role" value="User" checked="">
-                                <label class="form-check-label" for="optionsRadios1">User</label>
+                                <input class="form-check-input" type="radio" name="role" id="roleUser" wire:model="role" value="User" checked="">
+                                <label class="form-check-label" for="roleUser">User</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="role" wire:model="role" value="Admin">
-                                <label class="form-check-label" for="optionsRadios2">Admin</label>
+                                <input class="form-check-input" type="radio" name="role" id="roleAdmin" wire:model="role" value="Admin">
+                                <label class="form-check-label" for="roleAdmin">Admin</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label for="password" class="col-sm-3 col-form-label">Status</label>
+                        <div class="col-sm-8">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="statusActive" wire:model="status" value="Active" checked="">
+                                <label class="form-check-label" for="statusActive">Active</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="statusInactive" wire:model="status" value="Inactive">
+                                <label class="form-check-label" for="statusInactive">Inactive</label>
                             </div>
                         </div>
                     </div>
@@ -84,6 +98,7 @@
                     <th scope="col">Email</th>
                     <th scope="col">Password</th>
                     <th scope="col">Role</th>
+                    <th scope="col">Status</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -97,6 +112,7 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->password_not_hashed }}</td>
                         <td>{{ $user->role }}</td>
+                        <td>{{ $user->status }}</td>
                         <td>
                           <div class="button-group d-flex">
                             <a wire:click="edit({{ $user->id }})" class="btn btn-outline-success btn-sm" href="#">edit</a>
