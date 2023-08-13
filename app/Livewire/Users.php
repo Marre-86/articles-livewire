@@ -24,6 +24,9 @@ class Users extends Component
     public $title = 'Add User';
     public $sbmBtn = 'Add User';
 
+    public $sortField = 'id';
+    public $sortDirection = 'asc';
+
     public function save()
     {
         $this->validate([
@@ -109,9 +112,23 @@ class Users extends Component
         session()->flash('success', "User has been deleted!");
     }
 
+    public function sortBy($field, $direction)
+    {
+        $this->sortField = $field;
+        $this->sortDirection = $direction;
+    }
+
     public function render()
     {
-        $users = User::orderBy('id', 'asc')->paginate(10);
+        $users = User::when($this->sortField === 'role', function ($query) {
+            return $query->leftJoin('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
+                ->leftJoin('roles', 'model_has_roles.role_id', '=', 'roles.id')
+                ->orderBy('roles.name', $this->sortDirection)
+                ->select('users.*', 'roles.name as role_name') // Include the role name column
+                ->distinct();
+        }, function ($query) {
+            return $query->orderBy($this->sortField, $this->sortDirection);
+        })->paginate(10);
 
         foreach ($users as $user) {
             $user->role = $user->roles->first()->name;

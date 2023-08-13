@@ -93,12 +93,112 @@
           <table class="table table-hover">
             <thead>
                 <tr class="text-center" >
-                    <th scope="col">Id</th>
-                    <th scope="col" style="width:50%">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Password</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Status</th>
+                    <th style="width:13%" scope="col">Id
+                        <button
+                            @if ($sortField === 'id' && $sortDirection === 'asc')
+                                wire:click="sortBy('id', 'desc')"
+                            @else
+                                wire:click="sortBy('id', 'asc')"
+                            @endif
+                            class="btn btn-outline-primary sort-btn-sm {{ $sortField === 'id' ? 'active' : '' }}">
+                            @if($sortField === 'id' && $sortDirection === 'asc')
+                                <img src="/pics/sort-up.svg" alt="sort-by-id">
+                            @else
+                                <img src="/pics/sort-down.svg" alt="sort-by-id">
+                            @endif
+                        </button>
+                    </th>
+                    <th scope="col" style="width:20%">Name
+                        <button
+                            @if ($sortField === 'name' && $sortDirection === 'asc')
+                                wire:click="sortBy('name', 'desc')"
+                            @else
+                                wire:click="sortBy('name', 'asc')"
+                            @endif
+                            class="btn btn-outline-primary sort-btn-sm {{ $sortField === 'name' ? 'active' : '' }}">
+                            @if($sortField === 'name' && $sortDirection === 'asc')
+                                <img src="/pics/sort-up.svg" alt="sort-by-name">
+                            @else
+                                <img src="/pics/sort-down.svg" alt="sort-by-name">
+                            @endif
+                        </button>
+                    </th>
+                    <th scope="col" style="width:14%">Email
+                        <button
+                            @if ($sortField === 'email' && $sortDirection === 'asc')
+                                wire:click="sortBy('email', 'desc')"
+                            @else
+                                wire:click="sortBy('email', 'asc')"
+                            @endif
+                            class="btn btn-outline-primary sort-btn-sm {{ $sortField === 'email' ? 'active' : '' }}">
+                            @if($sortField === 'email' && $sortDirection === 'asc')
+                                <img src="/pics/sort-up.svg" alt="sort-by-email">
+                            @else
+                                <img src="/pics/sort-down.svg" alt="sort-by-email">
+                            @endif
+                        </button>
+                    </th>
+                    <th scope="col" style="width:15%">Password</th>
+                    <th scope="col" style="width:15%">Role
+                        <button
+                            @if ($sortField === 'role' && $sortDirection === 'asc')
+                                wire:click="sortBy('role', 'desc')"
+                            @else
+                                wire:click="sortBy('role', 'asc')"
+                            @endif
+                            class="btn btn-outline-primary sort-btn-sm {{ $sortField === 'role' ? 'active' : '' }}">
+                            @if($sortField === 'role' && $sortDirection === 'asc')
+                                <img src="/pics/sort-up.svg" alt="sort-by-role">
+                            @else
+                                <img src="/pics/sort-down.svg" alt="sort-by-role">
+                            @endif
+                        </button>
+                    </th>
+                    <th scope="col" style="width:15%">Status
+                        <button
+                            @if ($sortField === 'status' && $sortDirection === 'asc')
+                                wire:click="sortBy('status', 'desc')"
+                            @else
+                                wire:click="sortBy('status', 'asc')"
+                            @endif
+                            class="btn btn-outline-primary sort-btn-sm {{ $sortField === 'status' ? 'active' : '' }}">
+                            @if($sortField === 'status' && $sortDirection === 'asc')
+                                <img src="/pics/sort-up.svg" alt="sort-by-status">
+                            @else
+                                <img src="/pics/sort-down.svg" alt="sort-by-status">
+                            @endif
+                        </button>
+                    </th>
+                    <th scope="col" style="width:20%">Created At
+                        <button
+                            @if ($sortField === 'created_at' && $sortDirection === 'asc')
+                                wire:click="sortBy('created_at', 'desc')"
+                            @else
+                                wire:click="sortBy('created_at', 'asc')"
+                            @endif
+                            class="btn btn-outline-primary sort-btn-sm {{ $sortField === 'created_at' ? 'active' : '' }}">
+                            @if($sortField === 'created_at' && $sortDirection === 'asc')
+                                <img src="/pics/sort-up.svg" alt="sort-by-created_at">
+                            @else
+                                <img src="/pics/sort-down.svg" alt="sort-by-created_at">
+                            @endif
+                        </button>
+                    </th>
+                    <th scope="col" style="width:20%">Updated At
+                        <button
+                            @if ($sortField === 'updated_at' && $sortDirection === 'asc')
+                                wire:click="sortBy('updated_at', 'desc')"
+                            @else
+                                wire:click="sortBy('updated_at', 'asc')"
+                            @endif
+                            class="btn btn-outline-primary sort-btn-sm {{ $sortField === 'updated_at' ? 'active' : '' }}">
+                            @if($sortField === 'updated_at' && $sortDirection === 'asc')
+                                <img src="/pics/sort-up.svg" alt="sort-by-updated_at">
+                            @else
+                                <img src="/pics/sort-down.svg" alt="sort-by-updated_at">
+                            @endif
+                        </button>
+                    </th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -113,6 +213,8 @@
                         <td>{{ $user->password_not_hashed }}</td>
                         <td>{{ $user->role }}</td>
                         <td>{{ $user->status }}</td>
+                        <td>{{ $user->created_at }}</td>
+                        <td>{{ $user->updated_at }}</td>
                         <td>
                           <div class="button-group d-flex">
                             <a wire:click="edit({{ $user->id }})" class="btn btn-outline-success btn-sm" href="#">edit</a>
