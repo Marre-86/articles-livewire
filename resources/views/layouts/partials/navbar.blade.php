@@ -1,12 +1,17 @@
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-xxl">
-                        <a href="/">
+                        <a href="/" wire:navigate.hover>
                             <img href="/" src="/pics/logo.png" alt="logo" style="width:6rem;">
                         </a>
                         <ul class="navbar-nav me-auto" style="margin-left:30px">
                             @hasrole('Admin')
                             <li class="nav-item">
-                                <a class="nav-link {{ (Route::current()->getName() == 'users.index') ? 'active' : '' }}" href="{{ route('users.index') }}">Users
+                                <a class="nav-link {{ (Route::current()->getName() == 'users.index') ? 'active' : '' }}" href="{{ route('users.index') }}" wire:navigate.hover>Manage Users
+                                    <span class="visually-hidden">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ (Route::current()->getName() == 'categories.index') ? 'active' : '' }}" href="{{ route('categories.index') }}" wire:navigate.hover>Manage Categories
                                     <span class="visually-hidden">(current)</span>
                                 </a>
                             </li>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +35,8 @@ Route::post('login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [Logoutcontroller::class, 'destroy'])
     ->middleware('auth')->name('logout');
 
-Route::resource('users', UserController::class)->middleware(['can:manage-users', 'auth']);
+Route::get('users', [UserController::class, 'index'])
+    ->middleware(['can:manage-users', 'auth'])->name('users.index');
+
+Route::get('categories', [CategoryController::class, 'index'])
+    ->middleware(['can:manage-users', 'auth'])->name('categories.index');

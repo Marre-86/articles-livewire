@@ -7,7 +7,6 @@ use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 
 class Users extends Component
 {
@@ -97,7 +96,7 @@ class Users extends Component
 
         session()->flash('success', "User {$this->name} has been updated!");
 
-        $this->name = $this->email = $this->password = null;
+        $this->id = $this->name = $this->email = $this->password = null;
         $this->role = 'User';
         $this->status = 'Active';
         $this->title = 'Add User';
