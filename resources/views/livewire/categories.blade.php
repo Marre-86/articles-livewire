@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    <div class="w-30 users-index">
+    <div class="w-60 users-index">
       <div class="card" style="margin-bottom:1rem; min-width:fit-content;">
         <div class="card-header">
 
@@ -61,12 +61,96 @@
           <table class="table table-hover">
             <thead>
                 <tr class="text-center" >
-                    <th scope="col">Order</th>
-                    <th scope="col">Id</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col" style="width:50%">Name</th>
-                    <th scope="col">Status</th>
+                    <th scope="col" style="width:13%" colspan="3">Order
+                        <button
+                            @if ($sortField === 'order' && $sortDirection === 'asc')
+                                wire:click="sortBy('order', 'desc')"
+                            @else
+                                wire:click="sortBy('order', 'asc')"
+                            @endif
+                            class="btn btn-outline-primary sort-btn-sm {{ $sortField === 'order' ? 'active' : '' }}">
+                            @if($sortField === 'order' && $sortDirection === 'asc')
+                                <img src="/pics/sort-up.svg" alt="sort-by-order">
+                            @else
+                                <img src="/pics/sort-down.svg" alt="sort-by-order">
+                            @endif
+                        </button>
+                    </th>
+                    <th scope="col" style="width:9%">Id
+                        <button
+                            @if ($sortField === 'id' && $sortDirection === 'asc')
+                                wire:click="sortBy('id', 'desc')"
+                            @else
+                                wire:click="sortBy('id', 'asc')"
+                            @endif
+                            class="btn btn-outline-primary sort-btn-sm {{ $sortField === 'id' ? 'active' : '' }}">
+                            @if($sortField === 'id' && $sortDirection === 'asc')
+                                <img src="/pics/sort-up.svg" alt="sort-by-id">
+                            @else
+                                <img src="/pics/sort-down.svg" alt="sort-by-id">
+                            @endif
+                        </button>
+                    </th>
+                    <th scope="col" style="width:23%">Name
+                        <button
+                            @if ($sortField === 'name' && $sortDirection === 'asc')
+                                wire:click="sortBy('name', 'desc')"
+                            @else
+                                wire:click="sortBy('name', 'asc')"
+                            @endif
+                            class="btn btn-outline-primary sort-btn-sm {{ $sortField === 'name' ? 'active' : '' }}">
+                            @if($sortField === 'name' && $sortDirection === 'asc')
+                                <img src="/pics/sort-up.svg" alt="sort-by-name">
+                            @else
+                                <img src="/pics/sort-down.svg" alt="sort-by-name">
+                            @endif
+                        </button>
+                    </th>
+                    <th scope="col" style="width:15%">Status
+                        <button
+                            @if ($sortField === 'status' && $sortDirection === 'asc')
+                                wire:click="sortBy('status', 'desc')"
+                            @else
+                                wire:click="sortBy('status', 'asc')"
+                            @endif
+                            class="btn btn-outline-primary sort-btn-sm {{ $sortField === 'status' ? 'active' : '' }}">
+                            @if($sortField === 'status' && $sortDirection === 'asc')
+                                <img src="/pics/sort-up.svg" alt="sort-by-status">
+                            @else
+                                <img src="/pics/sort-down.svg" alt="sort-by-status">
+                            @endif
+                        </button>
+                    </th>
+                    <th scope="col" style="width:20%">Created At
+                        <button
+                            @if ($sortField === 'created_at' && $sortDirection === 'asc')
+                                wire:click="sortBy('created_at', 'desc')"
+                            @else
+                                wire:click="sortBy('created_at', 'asc')"
+                            @endif
+                            class="btn btn-outline-primary sort-btn-sm {{ $sortField === 'created_at' ? 'active' : '' }}">
+                            @if($sortField === 'created_at' && $sortDirection === 'asc')
+                                <img src="/pics/sort-up.svg" alt="sort-by-created_at">
+                            @else
+                                <img src="/pics/sort-down.svg" alt="sort-by-created_at">
+                            @endif
+                        </button>
+                    </th>
+                    <th scope="col" style="width:20%">Updated At
+                        <button
+                            @if ($sortField === 'updated_at' && $sortDirection === 'asc')
+                                wire:click="sortBy('updated_at', 'desc')"
+                            @else
+                                wire:click="sortBy('updated_at', 'asc')"
+                            @endif
+                            class="btn btn-outline-primary sort-btn-sm {{ $sortField === 'updated_at' ? 'active' : '' }}">
+                            @if($sortField === 'updated_at' && $sortDirection === 'asc')
+                                <img src="/pics/sort-up.svg" alt="sort-by-updated_at">
+                            @else
+                                <img src="/pics/sort-down.svg" alt="sort-by-updated_at">
+                            @endif
+                        </button>
+                    </th>
                     <th scope="col" style="width:5%"></th>
                 </tr>
             </thead>
@@ -75,25 +159,26 @@
                 @foreach ($categories as $category)
                     @php $class = $counter % 2 === 0 ? 'table-active' : 'table-default'; @endphp
                     <tr class="{{ $class }} text-center">
-                        <td>{{ $category->order }}
-                        <td>{{ $category->id }}
-                        </td>
-                        <td>
-                            @unless($loop->first)
-                                <button wire:click="moveUp({{ $category->id }})" class="btn btn-outline-primary btn-sm">
-                                    <img src="/pics/arrow-bar-up.svg" alt="cat-up" style="width:1rem;">
+                        <td>{{ $category->order }}</td>
+                        <td class="px-0">
+                            @unless($category->order === 1)
+                                <button wire:click="moveUp({{ $category->id }})" class="btn btn-outline-primary sort-btn-sm">
+                                    <img src="/pics/arrow-bar-up.svg" alt="cat-up">
                                 </button>
                             @endunless
                         </td>
-                        <td>
-                            @unless($loop->last)
-                                <button wire:click="moveDown({{ $category->id }})" class="btn btn-outline-primary btn-sm">
-                                    <img src="/pics/arrow-bar-down.svg" alt="cat-down" style="width:1rem;">
+                        <td class="px-0">
+                            @unless($category->order === $lastOrderValue)
+                                <button wire:click="moveDown({{ $category->id }})" class="btn btn-outline-primary sort-btn-sm">
+                                    <img src="/pics/arrow-bar-down.svg" alt="cat-down">
                                 </button>
                             @endunless
                         </td>
+                        <td>{{ $category->id }}</td>
                         <td>{{ $category->name }}</td>
                         <td>{{ $category->status }}</td>
+                        <td>{{ $category->created_at }}</td>
+                        <td>{{ $category->updated_at }}</td>
                         <td>
                           <div class="button-group d-flex">
                             <a wire:click="edit({{ $category->id }})" class="btn btn-outline-success btn-sm" href="#">edit</a>

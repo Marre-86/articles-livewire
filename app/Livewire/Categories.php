@@ -19,6 +19,16 @@ class Categories extends Component
     public $title = 'Add Category';
     public $sbmBtn = 'Add Category';
 
+    public $sortField = 'order';
+    public $sortDirection = 'asc';
+
+    public $lastOrderValue;
+
+    public function mount()
+    {
+        $this->lastOrderValue = Category::max('order');
+    }
+
     public function save()
     {
         $this->validate([
@@ -95,9 +105,15 @@ class Categories extends Component
         $category->moveOrderDown();
     }
 
+    public function sortBy($field, $direction)
+    {
+        $this->sortField = $field;
+        $this->sortDirection = $direction;
+    }
+
     public function render()
     {
-        $categories = Category::orderBy('order', 'asc')->paginate(10);
+        $categories = Category::orderBy($this->sortField, $this->sortDirection)->paginate(10);
 
         return view('livewire.categories', compact('categories'));
     }
