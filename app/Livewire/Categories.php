@@ -74,7 +74,6 @@ class Categories extends Component
             'status' => $this->status,
         ]);
 
-
         session()->flash('success', "Category {$this->name} has been updated!");
 
         $this->id = $this->name = null;

@@ -16,31 +16,52 @@ class CategoryTableSeeder extends Seeder
         Category::truncate();
 
         $category = Category::create([
-            'name' => 'clothes',
+            'name' => 'Technology',
             'order' => Category::getNextOrderValue(),
         ]);
 
         $category = Category::create([
-            'name' => 'shoes',
+            'name' => 'Mystery',
             'status' => 'Inactive',
             'order' => Category::getNextOrderValue(),
         ]);
 
         $category = Category::create([
-            'name' => 'trousers',
+            'name' => 'Fantasy',
             'status' => 'Active',
             'order' => Category::getNextOrderValue(),
         ]);
 
         $category = Category::create([
-            'name' => 'hats',
+            'name' => 'Romance',
             'status' => 'Active',
             'order' => Category::getNextOrderValue(),
         ]);
 
         $category = Category::create([
-            'name' => 'accessories',
+            'name' => 'Comedy',
             'status' => 'Active',
+            'order' => Category::getNextOrderValue(),
+        ]);
+
+        
+        $category = Category::create([
+            'name' => 'Thriller',
+            'status' => 'Active',
+            'order' => Category::getNextOrderValue(),
+        ]);
+
+        
+        $category = Category::create([
+            'name' => 'History',
+            'status' => 'Active',
+            'order' => Category::getNextOrderValue(),
+        ]);
+
+        
+        $category = Category::create([
+            'name' => 'Horror',
+            'status' => 'Inactive',
             'order' => Category::getNextOrderValue(),
         ]);
     }

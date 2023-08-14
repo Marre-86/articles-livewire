@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,9 @@ Route::get('users', [UserController::class, 'index'])
 
 Route::get('categories', [CategoryController::class, 'index'])
     ->middleware(['can:manage-users', 'auth'])->name('categories.index');
+
+Route::get('articles', [ArticleController::class, 'index'])
+    ->middleware(['can:manage-users', 'auth'])->name('articles.index');
+
+Route::get('articles/{slug}', [ArticleController::class, 'show'])
+    ->middleware(['can:manage-users', 'auth'])->name('articles.show');

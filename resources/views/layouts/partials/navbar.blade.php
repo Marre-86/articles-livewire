@@ -15,6 +15,11 @@
                                     <span class="visually-hidden">(current)</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ (Route::current()->getName() == 'articles.index') ? 'active' : '' }}" href="{{ route('articles.index') }}" wire:navigate.hover>Manage Articles
+                                    <span class="visually-hidden">(current)</span>
+                                </a>
+                            </li>
                             @endhasrole
                         </ul>
                         <div class="flex items-right lg:order-2">
