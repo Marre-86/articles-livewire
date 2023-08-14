@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use Illuminate\Http\Request;
+use App\Models\Category;
+
+class CategoryController extends Controller
+{
+    public function index(Request $request)
+    {
+        return Category::all();
+    }
+}
