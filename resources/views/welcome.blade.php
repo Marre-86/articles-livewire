@@ -3,7 +3,7 @@
 
 <div class="w-30">
 
-    <p class="intro">Данное веб-приложение было выполнено <a href="https://www.linkedin.com/in/artem-pokhiliuk/">Артёмом Похилюком</a> в качестве тестового задания. Сделано полностью во фреймворке Laravel.</p>
+    <p class="intro">Данное веб-приложение было выполнено <a href="https://www.linkedin.com/in/artem-pokhiliuk/">Артёмом Похилюком</a> в качестве тестового задания. Сделано полностью во фреймворке <strong>Laravel</strong> (с использованием <strong>Livewire</strong> для фронтенд-части)</p>
     <p class="intro">Задание, в соответсвии с которым был выполнен проект, можно найти <a href="https://docs.google.com/document/d/1Odscti-TbxImlQo6qSe1UCfwenEk2u10ZmuXffOEkuQ/edit">здесь</a>.</p>
     <p class="intro">Два пользователя добавлены в систему по умолчанию:</p>
     <table class="table table-hover">
