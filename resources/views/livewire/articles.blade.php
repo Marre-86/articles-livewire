@@ -234,7 +234,7 @@
                         </td>
                         <td>{{ $article->id }}</td>
                         <td>
-                            <a href="{{ route('articles.show', ['slug' => $article->slug]) }}">{{ $article->name }}</a>
+                            <a href="{{ route('articles.show', ['slug' => $article->slug]) }}" wire:navigate.hover>{{ $article->name }}</a>
                         </td>
                         <td>{{ $article->category->name }}</td>
                         <td>{{ $article->status }}</td>
