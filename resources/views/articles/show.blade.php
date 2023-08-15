@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-    <div class="w-60">
+    <div>
         <div class="card border-primary mb-3" style="max-width:30rem; float:left; margin-top:2rem">
             <div class="card-header">ID #{{ $article->id }}</div>
             <div class="card-body">
@@ -16,7 +16,7 @@
                     {{ $article->updated_at }}</p>
             </div>
         </div>
-        <div class="card" style="width: 22rem;  float:left; margin:2rem 0 0 1rem;">
+        <div class="card" style="width: 30rem;  float:left; margin:2rem 0 0 1rem;">
             <div class="card-body">
                 <img src="{{ asset('storage/images/'.$article->image) }}" class="img-card">
             </div>
